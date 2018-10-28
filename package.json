@@ -1,6 +1,6 @@
 {
   "name": "@audentio/ssr-toolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SSR toolkit",
   "main": "lib/index.js",
   "scripts": {
@@ -16,6 +16,12 @@
     "url": "https://github.com/Audentio/ssr-toolkit/issues"
   },
   "homepage": "https://github.com/Audentio/ssr-toolkit#readme",
+  "keywords": [
+    "react",
+    "isomorphic",
+    "ssr",
+    "express"    
+  ],
   "dependencies": {
     "chalk": "^2.3.2",
     "clean-css": "^4.1.11",
