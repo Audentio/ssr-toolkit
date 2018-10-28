@@ -22,7 +22,7 @@ export default function createExpressApp($config: SSRConfig) {
         ...$config,
     };
 
-    const { before, CSP } = config;
+    const { before, helmetConfig } = config;
     
     const app = express();
 
@@ -63,12 +63,7 @@ export default function createExpressApp($config: SSRConfig) {
 
     // some security measures
     // https://www.npmjs.com/package/helmet
-    app.use(helmet());
-
-    // Content Security Policy
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
-    // https://helmetjs.github.io/docs/csp/
-    if (CSP) app.use(helmet.contentSecurityPolicy(CSP));
+    app.use(helmet(helmetConfig));
 
     // Support JSON body
     app.use(bodyParser.json());

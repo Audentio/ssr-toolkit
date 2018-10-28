@@ -1,4 +1,4 @@
-import { IHelmetContentSecurityPolicyConfiguration } from 'helmet';
+import { IHelmetConfiguration } from 'helmet';
 
 export interface SSRConfig {
     /**
@@ -68,8 +68,8 @@ export interface SSRConfig {
     before?: (app) => void,
 
     /** 
-     * CSP configuration
-     * https://helmetjs.github.io/docs/csp/
+     * Helmet configuration
+     * https://helmetjs.github.io
      */
-    CSP?: IHelmetContentSecurityPolicyConfiguration,
+    helmetConfig?: IHelmetConfiguration,
 }
