@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "es2015",
+      "es2017",
+      "dom"
+    ],
+    "declaration": true,
+    "outDir": "lib",
+    "rootDir": "./src",
+    "strict": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "types": ["node"],
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "noErrorTruncation": true,
+  },
+  "typeAcquisition": {
+    "enable": true
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "examples"
+  ]
+}

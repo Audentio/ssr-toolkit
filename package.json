@@ -1,0 +1,50 @@
+{
+  "name": "@audentio/ssr-toolkit",
+  "version": "1.0.0",
+  "description": "SSR toolkit",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Audentio/ssr-toolkit.git"
+  },
+  "author": "Audentio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Audentio/ssr-toolkit/issues"
+  },
+  "homepage": "https://github.com/Audentio/ssr-toolkit#readme",
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "clean-css": "^4.1.11",
+    "compression": "^1.7.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
+    "express": "^4.16.4",
+    "file-stream-rotator": "^0.2.1",
+    "form-data": "^2.3.3",
+    "fs-extra": "^5.0.0",
+    "helmet": "^3.12.0",
+    "history": "^4.7.2",
+    "http-auth": "^3.2.3",
+    "morgan": "^1.9.0",
+    "react-helmet": "^5.2.0",
+    "sanitize-filename": "^1.6.1",
+    "shhh": "^1.0.3",
+    "source-map-support": "^0.5.9",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "@audentio/eslint-config-standard": "^1.1.0",
+    "@types/node": "^10.12.0",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "typescript": "^3.1.3"
+  }
+}
