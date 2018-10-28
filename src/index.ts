@@ -4,7 +4,6 @@ import FormData from 'form-data';
 import sourcemap from 'source-map-support';
 import createExpressApp from './createExpressApp';
 import errorHandler from './errorHandler';
-import './browserShim';
 import { SSRConfig } from './config.type';
 
 // FormData support on server
