@@ -23,13 +23,13 @@ export default function createServer(config: SSRConfig) {
             setupBrowserGlobals(req);
 
             const { html, context = {} } = await renderApp(req, res);
-            const { status = 200, action } = context;
+            const { statusCode = 200, action } = context;
 
             if (action === 'REPLACE') {
                 // Redirect
-                res.redirect(status, context.url);
+                res.redirect(statusCode, context.url);
             } else {
-                res.status(status).send(html);
+                res.status(statusCode).send(html);
             }
         } catch (error) {
             next(error);
