@@ -10,7 +10,7 @@ const source_app_assets = express.static(
     { maxAge: cacheAge },
 );
 const source_dist = express.static(
-    process.cwd() + '/dist',
+    process.cwd() + '/dist/client',
     { maxAge: cacheAge },
 );
 

@@ -1,6 +1,6 @@
 {
   "name": "@audentio/ssr-toolkit",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "SSR toolkit",
   "main": "lib/index.js",
   "scripts": {
