@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- head.meta.toString() %>
+        <%- head.title.toString() %>
+        <%- head.base.toString() %>
+        <%- head.link.toString() %>
+    </head>
+
+    <body>
+        <div id="app-root"><%- rendered %></div>
+
+        <%# apollo client state %>
+        <script nonce="<%- nonce %>">
+            window.__APOLLO_STATE__ = <%- initialState %>;
+        </script>
+
+        <script src="/dist/main.js"></script>
+    </body>
+</html>
