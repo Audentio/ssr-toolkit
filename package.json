@@ -1,10 +1,12 @@
 {
   "name": "@audentio/ssr-toolkit",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "SSR toolkit",
   "main": "lib/index.js",
   "scripts": {
-    "start": "tsc --watch"
+    "start": "tsc --watch",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",

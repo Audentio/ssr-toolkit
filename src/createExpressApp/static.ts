@@ -5,8 +5,8 @@ import { SSRConfig } from '../config.type';
 
 const cacheAge = '168h'; 
 
-const source_app_assets = express.static(
-    process.cwd() + '/app/assets',
+const source_assets = express.static(
+    process.cwd() + '/src/assets',
     { maxAge: cacheAge },
 );
 const source_dist = express.static(
@@ -23,8 +23,8 @@ export default function serveStatic(app, config: SSRConfig) {
         });
     }
 
-    // serve static assets from /app/assets
-    app.use('/assets', source_app_assets);
+    // serve static assets from /src/assets
+    app.use('/assets', source_assets);
 
     // serve static assets from /dist
     app.use('/dist', source_dist);
