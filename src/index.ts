@@ -2,6 +2,7 @@
 
 import FormData from 'form-data';
 import sourcemap from 'source-map-support';
+import * as Sentry from '@sentry/node';
 import createExpressApp from './createExpressApp';
 import errorHandler from './errorHandler';
 import { SSRConfig } from './config.type';
@@ -42,7 +43,10 @@ export default function createServer(config: SSRConfig) {
 
     // Start server on port defined in config
     app.listen(port, err => {
-        if (err) console.error(err);
+        if (err) {
+            Sentry.captureException(err);
+            console.error(err);
+        }
 
         console.log(`Running on port ${port}`);
     });

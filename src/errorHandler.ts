@@ -1,5 +1,6 @@
 import escapeRegExp from 'lodash/escapeRegExp';
 import chalk from 'chalk';
+import * as Sentry from '@sentry/node';
 import { SSRConfig } from './config.type';
 
 export default function createErrorHandler(config: SSRConfig) {
@@ -19,6 +20,8 @@ export default function createErrorHandler(config: SSRConfig) {
         // avoid showing full path
         // and hide irrelevant lines
         const errorStack = truncateStackTrace(error.stack);
+
+        Sentry.captureException(error);
 
         console.error('\n' + chalk.bold.red(req.id));
         console.error(errorStack);

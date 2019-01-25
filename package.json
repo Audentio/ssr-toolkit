@@ -1,6 +1,6 @@
 {
   "name": "@audentio/ssr-toolkit",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "SSR toolkit",
   "main": "lib/index.js",
   "scripts": {
@@ -25,6 +25,7 @@
     "express"
   ],
   "dependencies": {
+    "@sentry/node": "^4.5.3",
     "chalk": "^2.3.2",
     "clean-css": "^4.1.11",
     "compression": "^1.7.2",
