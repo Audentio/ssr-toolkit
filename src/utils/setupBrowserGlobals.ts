@@ -1,4 +1,4 @@
-import { createLocation } from 'history/LocationUtils';
+import { createLocation } from 'history';
 
 declare const global: any;
 
