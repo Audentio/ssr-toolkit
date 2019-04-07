@@ -29,7 +29,7 @@ export default function createErrorHandler(config: SSRConfig) {
         let errorPage = `An error occured.<br>Request ID: ${req.id}`;
         if (renderError) {
             // fancy custom error page
-            errorPage = renderError(req, error);
+            errorPage = renderError(req, res, error);
         }
 
         const status = error instanceof URIError ? 400 : 500;

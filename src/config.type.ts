@@ -16,7 +16,7 @@ export interface SSRConfig {
      * Render error page
      * by default a basic one is sent
      */
-    renderError?: (req, error) => any,
+    renderError?: (req, res, error) => any,
 
     /**
      * error callback. useful for error trackers
