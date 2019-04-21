@@ -15,7 +15,7 @@ import createLogger from './logger';
 import removeTrailingSlash from './removeTrailingSlash';
 import serveStatic from './static';
 
-export default function createExpressApp($config: SSRConfig) {
+export default function createExpressApp($config: SSRConfig): express.Application {
     const config = {
         compression: true,
         logs: true,

@@ -1,60 +1,52 @@
 import chalk from 'chalk';
-import * as cache from './store';
+import path from 'path';
+import * as cacheStore from './store';
 
-const withCache = (render, config) => {
-    const { cache_life, cache_short_life } = config;
+const cacheEnabled = process.argv.slice(2).indexOf('--no-cache') === -1;
+if (!cacheEnabled) {
+    console.log(chalk.yellow('WARNING: Cache has been disabled.'));
+}
 
+const {
     // Cache life (in seconds)
-    // if cache is older than this, visitor will be served new content immediately
-    const CACHE_LIFE = cache_life || 3600;
+    // if cache is older than this, visitor will be served new content
+    CACHE_LIFE = 3600,
+} = __non_webpack_require__(path.join(process.cwd(), 'config/application.js'));
 
-    // Cache half life (in seconds)
-    // if cache is older than this, visitor will be served cached content 
-    // and new content will start rendering in background
-    // next visitor will see new content
-    const CACHE_SHORT_LIFE = cache_short_life || 300; // 5 minutes
-
-    // do not wrap if --no-cache is passed
-    const cacheEnabled = process.argv.slice(2).indexOf('--no-cache') === -1;
-    if (!cacheEnabled) {
-        console.log(chalk.yellow('WARNING: Cache has been disabled.'));
-        return render;
-    }
-
-    // return cache-enabled render function
-    // which only renders page if there's no cache or cache is old
-    return async function renderWithCache(routes, req) {
+export const cache = {
+    async get(req) {
         const noCacheRequest = req.cookies.__nocache === 'true';
 
-        if (noCacheRequest) {
-            // skip cache for this request
-            return render(routes, req);
+        if (noCacheRequest || !cacheEnabled) return null;
+
+        const cached = await cacheStore.get(req.url);
+        const cache_age = cached && (await cacheStore.age(req.url));
+
+        if (cache_age < CACHE_LIFE) {
+            return cached;
         }
 
-        const cached = await cache.get(req.url);
-        const cache_age = cached && await cache.age(req.url);
+        return null;
+    },
 
-        // short life expired
-        if (cached && cache_age < CACHE_LIFE) {
-            if (cache_age > CACHE_SHORT_LIFE) {
-                // Re-render this page asyncrhonously
-                render(routes, req);
-            }
+    set(req, res, html) {
+        if (!cacheEnabled) return;
 
-            // but return cached result for this request
-            return { html: cached };
+        // only save if status is 200 and it's not a redirect
+        const isSuccessful = !res.context.statusCode || res.context.statusCode === 200;
+        if (isSuccessful && res.context && res.context.action !== 'REPLACE') {
+            cacheStore.set(req.url, html);
         }
+    },
 
-        // cache expired or doesn't exist
-        // wait for the new render
-        return render(routes, req)
-            .catch(error => {
-                // remove from cache, so it's re-rendered on next request
-                // avoids error pages from being served from cache
-                cache.remove(req.url);
-                throw error;
-            });
-    };
+    remove(req) {
+        if (!cacheEnabled) return;
+
+        cacheStore.remove(req.url);
+    },
 };
 
-export default withCache;
+// backward compatibility
+export default function withCache(render) {
+    return render;
+}
