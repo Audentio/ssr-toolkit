@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@audentio/eslint-config-standard": "^2.0.0",
-    "@types/node": "^11.11.7"
+    "@types/node": "^11.11.7",
+    "typescript": "^3.4.4"
   }
 }
