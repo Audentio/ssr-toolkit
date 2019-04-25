@@ -29,12 +29,12 @@ export const cache = {
         return null;
     },
 
-    set(req, res, html) {
+    set(req, context, html) {
         if (!cacheEnabled) return;
 
         // only save if status is 200 and it's not a redirect
-        const isSuccessful = !res.context.statusCode || res.context.statusCode === 200;
-        if (isSuccessful && res.context && res.context.action !== 'REPLACE') {
+        const isSuccessful = !context.statusCode || context.statusCode === 200;
+        if (isSuccessful && context && context.action !== 'REPLACE') {
             cacheStore.set(req.url, html);
         }
     },
