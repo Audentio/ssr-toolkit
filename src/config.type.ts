@@ -47,6 +47,12 @@ export interface SSRConfig {
     compression?: boolean,
 
     /**
+     * Static assets cache age
+     * ms format: https://www.npmjs.com/package/ms
+     */
+    assetCacheAge?: string,
+
+    /**
      * access logs with morgan
      * https://www.npmjs.com/package/morgan
      */

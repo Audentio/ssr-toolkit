@@ -3,18 +3,18 @@ import path from 'path';
 import express from 'express';
 import { SSRConfig } from '../config.type';
 
-const cacheAge = '168h'; 
-
-const source_assets = express.static(
-    process.cwd() + '/src/assets',
-    { maxAge: cacheAge },
-);
-const source_dist = express.static(
-    process.cwd() + '/dist/client',
-    { maxAge: cacheAge },
-);
-
 export default function serveStatic(app, config: SSRConfig) {
+    const cacheAge = config.assetCacheAge || '168h'; 
+    
+    const source_assets = express.static(
+        process.cwd() + '/src/assets',
+        { maxAge: cacheAge },
+    );
+    const source_dist = express.static(
+        process.cwd() + '/dist/client',
+        { maxAge: cacheAge },
+    );
+
     // sourcemap control
     // send 404 for sourcemap reqs unless enabled explicitly in config
     if (!config.sourcemaps) {
