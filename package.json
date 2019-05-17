@@ -4,6 +4,7 @@
   "description": "SSR toolkit",
   "main": "lib/index.js",
   "scripts": {
+    "release": "release-it",
     "start": "tsc --watch",
     "build": "tsc",
     "prepublishOnly": "npm run build"
@@ -49,6 +50,7 @@
   "devDependencies": {
     "@audentio/eslint-config-standard": "^2.0.0",
     "@types/node": "^11.11.7",
+    "release-it": "^12.2.0",
     "typescript": "^3.4.4"
   }
 }
