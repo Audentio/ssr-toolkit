@@ -7,7 +7,7 @@ const clientBundleStats = __non_webpack_require__(path.join(process.cwd(), 'dist
 
 export default function getChunkAssets() {
     const chunkNames = flushChunkNames();
-    const assets = {
+    const assets: { css: string[], js: string[] } = {
         css: [],
         js: [],
     };
@@ -20,6 +20,10 @@ export default function getChunkAssets() {
         assets.js = assets.js.concat(js);
         assets.css = assets.css.concat(css);
     });
+
+    // make sure client-main is first in order
+    // default order can cause CSS override issues
+    assets.css = assets.css.sort(csschunk => csschunk.indexOf('client-main') === 0 ? -1 : 1);
 
     return assets;
 }
