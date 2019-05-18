@@ -21,9 +21,5 @@ export default function getChunkAssets() {
         assets.css = assets.css.concat(css);
     });
 
-    // make sure client-main is first in order
-    // default order can cause CSS override issues
-    assets.css = assets.css.sort(csschunk => csschunk.indexOf('client-main') === 0 ? -1 : 1);
-
     return assets;
 }
