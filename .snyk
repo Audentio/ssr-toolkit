@@ -6,3 +6,21 @@ patch:
   SNYK-JS-LODASH-450202:
     - react-universal-component > react-hot-loader > lodash:
         patched: '2019-07-03T22:32:09.482Z'
+    - snyk > lodash:
+        patched: '2019-07-13T06:37:08.169Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2019-07-13T06:37:08.169Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2019-07-13T06:37:08.169Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2019-07-13T06:37:08.169Z'
+    - snyk > inquirer > lodash:
+        patched: '2019-07-13T06:37:08.169Z'
+    - snyk > snyk-config > lodash:
+        patched: '2019-07-13T06:37:08.169Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-07-13T06:37:08.169Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-07-13T06:37:08.169Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-07-13T06:37:08.169Z'
