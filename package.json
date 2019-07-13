@@ -28,17 +28,17 @@
     "express"
   ],
   "dependencies": {
-    "@sentry/node": "^5.1.0",
+    "@sentry/node": "^5.5.0",
     "chalk": "^2.3.2",
     "clean-css": "^4.1.11",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.4",
-    "ejs": "^2.5.7",
-    "express": "^4.16.4",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
     "file-stream-rotator": "^0.4.1",
-    "form-data": "^2.3.3",
-    "fs-extra": "^7.0.1",
-    "helmet": "^3.16.0",
+    "form-data": "^2.5.0",
+    "fs-extra": "^8.1.0",
+    "helmet": "^3.18.0",
     "history": "^4.9.0",
     "http-auth": "^3.2.3",
     "morgan": "^1.9.0",
@@ -46,15 +46,15 @@
     "react-universal-component": "^4.0.0",
     "sanitize-filename": "^1.6.1",
     "shhh": "^1.0.3",
+    "snyk": "^1.193.1",
     "source-map-support": "^0.5.11",
-    "uuid": "^3.2.1",
-    "snyk": "^1.193.1"
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "@audentio/eslint-config-standard": "^2.0.0",
-    "@types/node": "^11.11.7",
-    "release-it": "^12.2.0",
-    "typescript": "^3.4.4"
+    "@audentio/eslint-config-standard": "^2.0.2",
+    "@types/node": "^12.6.2",
+    "release-it": "^12.3.3",
+    "typescript": "^3.5.3"
   },
   "snyk": true
 }
