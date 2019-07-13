@@ -7,7 +7,9 @@
     "release": "release-it",
     "start": "tsc --watch",
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -45,12 +47,14 @@
     "sanitize-filename": "^1.6.1",
     "shhh": "^1.0.3",
     "source-map-support": "^0.5.11",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@audentio/eslint-config-standard": "^2.0.0",
     "@types/node": "^11.11.7",
     "release-it": "^12.2.0",
     "typescript": "^3.4.4"
-  }
+  },
+  "snyk": true
 }
