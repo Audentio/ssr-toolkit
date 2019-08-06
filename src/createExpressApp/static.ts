@@ -39,7 +39,7 @@ export default function serveStatic(app, config: SSRConfig) {
     app.use((req, res, next) => {
         const filepath = path.join(process.cwd(), 'public', req.url);
 
-        if (fs.existsSync(filepath)) {
+        if (req.url !== '/' && fs.existsSync(filepath)) {
             res.sendFile(filepath);
         } else {
             next();
