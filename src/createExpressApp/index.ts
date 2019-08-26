@@ -4,10 +4,8 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import express from 'express';
-import fs from 'fs';
 import helmet from 'helmet';
 import auth from 'http-auth';
-import path from 'path';
 import uuid from 'uuid/v1';
 import uuidv4 from 'uuid/v4';
 import { SSRConfig } from '../config.type';
@@ -43,6 +41,7 @@ export default function createExpressApp($config: SSRConfig): express.Applicatio
         // if username and password is passed
         // use auth callback
         const basicAuth = auth.basic(config.auth, (username, password, callback) => {
+            // @ts-ignore
             callback(username === config.auth.username && password === config.auth.password);
         });
 
