@@ -39,25 +39,12 @@ export default function createExpressApp($config: SSRConfig): express.Applicatio
     if (before) before(app);
 
     // HTTP authentication
-    const authFilePath = path.join(process.cwd(), 'users.htpasswd');
-    const hasAuthFile = fs.existsSync(path.join(process.cwd(), 'users.htpasswd'));
-    if (hasAuthFile && config.auth !== false) {
-        let basicAuth;
-        const authConfig = typeof config.auth === 'object' ? config.auth : {};
-
-        if (authConfig.username && authConfig.password) {
-            // if username and password is passed
-            // use auth callback
-            basicAuth = auth.basic(authConfig, (username, password, callback) => {
-                callback(username === authConfig.username && password === authConfig.password);
-            });
-        } else {
-            // use htpasswd file method
-            basicAuth = auth.basic({
-                file: authFilePath,
-                ...authConfig,
-            });
-        }
+    if (config.auth && config.auth.username && config.auth.password) {
+        // if username and password is passed
+        // use auth callback
+        const basicAuth = auth.basic(config.auth, (username, password, callback) => {
+            callback(username === config.auth.username && password === config.auth.password);
+        });
 
         app.use(auth.connect(basicAuth));
     }
