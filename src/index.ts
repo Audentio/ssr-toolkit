@@ -14,8 +14,8 @@ import setupBrowserGlobals from './utils/setupBrowserGlobals';
 // sourcemap support for node
 sourcemap.install();
 
-export default function createServer(config: SSRConfig) {
-    const { after, renderApp, port = 8080 } = config;
+export default function createServer(config: SSRConfig): import('express').Application {
+    const { after, renderApp, port = 8080, listen = true } = config;
 
     const app = createExpressApp(config);
     
@@ -41,13 +41,17 @@ export default function createServer(config: SSRConfig) {
 
     app.use(errorHandler(config));
 
-    // Start server on port defined in config
-    app.listen(port, err => {
-        if (err) {
-            Sentry.captureException(err);
-            console.error(err);
-        }
+    if (listen) {
+        // Start server on port defined in config
+        app.listen(port, err => {
+            if (err) {
+                Sentry.captureException(err);
+                console.error(err);
+            }
 
-        console.log(`Running on port ${port}`);
-    });
+            console.log(`Running on port ${port}`);
+        });
+    }
+
+    return app;
 }

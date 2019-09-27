@@ -25,6 +25,7 @@ export interface SSRConfig {
 
     /**
      * run code after middlewares
+     * executed right before adding errorHandler middleware
      */
     after?: (app) => void,
 
@@ -78,4 +79,11 @@ export interface SSRConfig {
      * https://helmetjs.github.io
      */
     helmetConfig?: IHelmetConfiguration,
+
+    /** 
+     * call app.listen()
+     * pass false if you need to set that up yourself (e.g. for https)
+     * @default true
+     */
+    listen?: boolean;
 }
