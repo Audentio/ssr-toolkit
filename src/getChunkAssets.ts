@@ -13,7 +13,7 @@ export default function getChunkAssets() {
     };
 
     ['main'].concat(chunkNames).forEach(chunkName => {
-        const chunkAssets = clientBundleStats.namedChunkGroups[chunkName].assets;
+        const chunkAssets = clientBundleStats.namedChunkGroups ? clientBundleStats.namedChunkGroups[chunkName].assets : clientBundleStats.assetsByChunkName[chunkName];
         const js = chunkAssets.filter(asset => /.js$/.test(asset.split('?ver')[0]));
         const css = chunkAssets.filter(asset => /.css$/.test(asset.split('?ver')[0]));
 
