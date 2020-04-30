@@ -46,7 +46,7 @@
     "react-universal-component": "^4.0.0",
     "sanitize-filename": "^1.6.3",
     "shhh": "^1.0.3",
-    "snyk": "^1.258.2",
+    "snyk": "^1.316.1",
     "source-map-support": "^0.5.13",
     "uuid": "^3.3.3"
   },
